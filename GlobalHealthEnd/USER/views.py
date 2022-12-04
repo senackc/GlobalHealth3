@@ -10,6 +10,7 @@ class UserLoginView(generics.GenericAPIView):
     permission_classes = [permissions.AllowAny]
 
     def post(self, request, *args, **kwargs):
+        print(request.data)
         serializer = self.get_serializer(
             data=request.data, context={"request": request}
         )

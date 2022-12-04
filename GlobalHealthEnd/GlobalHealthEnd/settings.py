@@ -42,10 +42,10 @@ INSTALLED_APPS = [
     'UserAttribute',
     'UserDisease',
     'USER',
+    'corsheaders',
 ]
 
 AUTH_USER_MODEL = "USER.User"
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -54,10 +54,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'GlobalHealthEnd.urls'
-
+CORS_ALLOW_ALL_ORIGINS = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -75,7 +76,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'GlobalHealthEnd.wsgi.application'
-
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = (
+    'https://localhost:3000',
+)
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
